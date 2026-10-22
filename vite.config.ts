@@ -5,7 +5,55 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    plugins: [react(), tailwindcss()],
+    plugins: [
+      react(),
+      tailwindcss(),
+      {
+        name: 'api-gemini-dev-server',
+        configureServer(server) {
+          server.middlewares.use('/api/gemini', async (req, res) => {
+            if (req.method !== 'POST') {
+              res.statusCode = 405;
+              res.setHeader('Content-Type', 'application/json');
+              res.end(JSON.stringify({ error: 'Method Not Allowed' }));
+              return;
+            }
+            let rawBody = '';
+            req.on('data', chunk => {
+              rawBody += chunk;
+            });
+            req.on('end', async () => {
+              try {
+                const { default: handler } = await import('./api/gemini.ts');
+                let parsedBody: any = {};
+                try {
+                  parsedBody = JSON.parse(rawBody);
+                } catch {
+                  parsedBody = rawBody;
+                }
+                const mockReq = Object.assign(req, { body: parsedBody });
+                const mockRes = Object.assign(res, {
+                  status(code: number) {
+                    res.statusCode = code;
+                    return mockRes;
+                  },
+                  json(data: any) {
+                    res.setHeader('Content-Type', 'application/json');
+                    res.end(JSON.stringify(data));
+                    return mockRes;
+                  },
+                });
+                await handler(mockReq as any, mockRes as any);
+              } catch (err: any) {
+                res.statusCode = 500;
+                res.setHeader('Content-Type', 'application/json');
+                res.end(JSON.stringify({ error: err?.message || 'Dev server error' }));
+              }
+            });
+          });
+        },
+      },
+    ],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
