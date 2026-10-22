@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #245E59;
+    background-color: #F8FDFB;
+  }
+}
+
+:root {
+  --color-mint: #BCEBD8;
+  --color-sky: #C9E9FF;
+  --color-cream: #FFF5D6;
+  --color-pink: #FFD9E5;
+  --color-lavender: #E6DDFB;
+  --color-deep-teal: #245E59;
+}
