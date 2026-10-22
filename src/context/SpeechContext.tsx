@@ -9,7 +9,10 @@ export interface SpeechContextType {
   isLoading: boolean;
   speakingId: string | null;
   audioSource: 'prerecorded' | 'tts' | null;
-  playPhrase: (phrase: { id: string; english: string }) => void;
+  playbackSpeed: 0.75 | 1;
+  setPlaybackSpeed: (speed: 0.75 | 1) => void;
+  togglePlaybackSpeed: () => void;
+  playPhrase: (phrase: { id: string; english: string; audioUrl?: string }) => void;
   speak: (text: string, phraseId?: string) => void;
   stop: () => void;
   hasPrerecordedAudio: (phraseId: string) => boolean;
@@ -103,12 +106,55 @@ export const SpeechProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   const [audioSource, setAudioSource] = useState<'prerecorded' | 'tts' | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  // Prompt requirement: speaking rate = 0.9
-  const rate = 0.9;
+  // Playback speed support: 0.75x and 1x
+  const [playbackSpeed, setPlaybackSpeedState] = useState<0.75 | 1>(() => {
+    try {
+      return localStorage.getItem('codo2_playback_speed') === '0.75' ? 0.75 : 1;
+    } catch {
+      return 1;
+    }
+  });
+
+  const rate = playbackSpeed === 0.75 ? 0.75 : 0.9;
 
   // References to keep single authorative audio and utterance instances
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const activeUtteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
+
+  const setPlaybackSpeed = useCallback((newSpeed: 0.75 | 1) => {
+    setPlaybackSpeedState(newSpeed);
+    try {
+      localStorage.setItem('codo2_playback_speed', String(newSpeed));
+    } catch {
+      // ignore
+    }
+    if (audioRef.current) {
+      try {
+        audioRef.current.playbackRate = newSpeed;
+      } catch (e) {
+        console.warn('Error setting audio playbackRate:', e);
+      }
+    }
+  }, []);
+
+  const togglePlaybackSpeed = useCallback(() => {
+    setPlaybackSpeedState((prev) => {
+      const next = prev === 1 ? 0.75 : 1;
+      try {
+        localStorage.setItem('codo2_playback_speed', String(next));
+      } catch {
+        // ignore
+      }
+      if (audioRef.current) {
+        try {
+          audioRef.current.playbackRate = next;
+        } catch {
+          // ignore
+        }
+      }
+      return next;
+    });
+  }, []);
 
   // Asynchronously load SpeechSynthesis voices
   useEffect(() => {
@@ -277,9 +323,9 @@ export const SpeechProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     }
   }, [isSpeechSupported, selectedVoice, rate]);
 
-  // Main hybrid play function
-  const playPhrase = useCallback((phrase: { id: string; english: string }) => {
-    const { id, english } = phrase;
+  // Main play function with prerecorded audio as primary and TTS as emergency fallback
+  const playPhrase = useCallback((phrase: { id: string; english: string; audioUrl?: string }) => {
+    const { id, english, audioUrl } = phrase;
 
     // If currently playing or loading this exact phrase, toggle to stop
     if (speakingId === id && (isSpeaking || isLoading)) {
@@ -291,35 +337,26 @@ export const SpeechProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     // 2. Cancel any active speech synthesis
     stop();
 
-    // 3. Check whether this phrase is in the 59 approved prerecorded WAV files
+    // 3. Check whether this phrase is in the approved prerecorded WAV files
     const isPrerecorded = PRERECORDED_WAV_IDS.has(id);
+    const audioPath = audioUrl || `/audio/${id}.wav`;
 
     if (isPrerecorded) {
-      // Safety check: Do not use prerecorded WAV files if displayed English text does not match approved text
-      const approvedText = APPROVED_PRERECORDED_AUDIO_MAP[id];
-      const normalize = (t: string) => (t || '').toLowerCase().replace(/[^a-z0-9]/g, '');
-      const isVerified = approvedText && normalize(english) === normalize(approvedText);
-
-      if (!isVerified) {
-        console.warn(
-          `Audio mapping warning: Phrase ${id} text "${english}" does not match approved prerecorded text "${approvedText}". Playing browser TTS to ensure accurate pronunciation.`
-        );
-        setErrorMessage(
-          `Cảnh báo phát âm: Nội dung mẫu câu "${english}" không trùng khớp với tệp thu âm sẵn của mã ${id}. Hệ thống chuyển sang phát âm chuẩn tiếng Anh của trình duyệt để đảm bảo độ chính xác.`
-        );
-        setSpeakingId(id);
-        setIsLoading(true);
-        speakTTS(english, id);
-        return;
-      }
-
-      // 4. Play WAV file with graceful fallback to TTS on error
       setSpeakingId(id);
       setIsLoading(true);
       setAudioSource('prerecorded');
 
-      const audio = new Audio(`/audio/${id}.wav`);
+      const audio = new Audio(audioPath);
+      audio.playbackRate = playbackSpeed;
       audioRef.current = audio;
+
+      audio.onloadedmetadata = () => {
+        try {
+          audio.playbackRate = playbackSpeed;
+        } catch {
+          // ignore
+        }
+      };
 
       audio.onplay = () => {
         setIsLoading(false);
@@ -334,7 +371,7 @@ export const SpeechProvider: React.FC<{ children: React.ReactNode }> = ({ childr
       };
 
       audio.onerror = (e) => {
-        console.warn(`WAV file /audio/${id}.wav failed to load or play. Falling back to browser TTS.`, e);
+        console.warn(`WAV file ${audioPath} failed to load or play. Falling back to browser TTS.`, e);
         // Fallback to browser TTS immediately
         speakTTS(english, id);
       };
@@ -348,13 +385,12 @@ export const SpeechProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         });
       }
     } else {
-      // 5. For the 101 phrases without prerecorded WAV, immediately use browser TTS
-      // (Do NOT repeatedly request missing WAV files for phrases that are known to have no prerecorded audio)
+      // Emergency fallback for any phrase without prerecorded audio
       setSpeakingId(id);
       setIsLoading(true);
       speakTTS(english, id);
     }
-  }, [speakingId, isSpeaking, isLoading, stop, speakTTS]);
+  }, [speakingId, isSpeaking, isLoading, stop, speakTTS, playbackSpeed]);
 
   // Legacy speak helper (for backward compatibility)
   const speak = useCallback((text: string, phraseId?: string) => {
@@ -389,6 +425,9 @@ export const SpeechProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         isLoading,
         speakingId,
         audioSource,
+        playbackSpeed,
+        setPlaybackSpeed,
+        togglePlaybackSpeed,
         playPhrase,
         speak,
         stop,

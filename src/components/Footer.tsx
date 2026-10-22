@@ -8,76 +8,80 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
   return (
-    <footer className="bg-white border-t border-slate-200 mt-10 py-6 text-slate-600 text-xs">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+    <footer className="bg-white border-t border-blue-100 mt-12 py-8 text-slate-600 text-xs">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
         {/* Top Row: School & Developer Credits + Quick Navigation */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-5 pb-5 border-b border-slate-100">
           {/* Identity & Credits */}
           <div className="space-y-1.5">
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded-lg bg-[#BCEBD8] flex items-center justify-center text-[#245E59]">
-                <School className="w-3.5 h-3.5 text-[#245E59]" />
+            <div className="flex items-center gap-2.5">
+              <div className="w-7 h-7 rounded-full overflow-hidden bg-white border border-blue-100 shrink-0 flex items-center justify-center p-0.5 shadow-2xs">
+                <img
+                  src="/codo2_logo.jpg"
+                  alt="Logo Trường Tiểu học Cổ Đô 2"
+                  className="w-full h-full object-contain rounded-full"
+                />
               </div>
-              <span className="font-bold text-[#245E59]">
-                Na Duong – ESL Primary School
+              <span className="font-black text-[#123A78] text-sm">
+                Co Do 2 - ESL primary school
               </span>
             </div>
 
             {/* Exact Developer Credits */}
-            <div className="text-slate-600 space-y-0.5">
+            <div className="text-slate-600 space-y-0.5 font-medium">
               <div>
-                <strong className="text-[#245E59]">Nguyễn Thị Ánh</strong> – Giáo viên Tiếng Anh
+                Developed by <strong className="text-[#123A78] font-bold">Ms Jessica</strong> – Trường Tiểu học Cổ Đô 2
               </div>
-              <div>
-                <strong className="text-[#245E59]">Triệu Thu Hà</strong> – Giáo viên tiểu học
+              <div className="text-[11px] text-slate-500">
+                Lê Thị Thanh Huyền – Giáo viên Tiếng Anh
               </div>
               <div className="flex items-center gap-1 text-[11px] text-slate-500 pt-0.5">
-                <MapPin className="w-3 h-3 text-slate-400 shrink-0" />
-                <span>Trường Tiểu học Na Dương, xã Na Dương, tỉnh Lạng Sơn.</span>
+                <MapPin className="w-3 h-3 text-rose-500 shrink-0" />
+                <span>Xã Cổ Đô, Thành phố Hà Nội, Việt Nam</span>
               </div>
             </div>
           </div>
 
           {/* Clean Quick Nav Links */}
-          <nav className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-slate-500 font-medium">
+          <nav className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-slate-600 font-bold">
             <button
               onClick={() => onSelectTab('home')}
-              className="hover:text-[#245E59] transition-colors cursor-pointer"
+              className="hover:text-[#1764C0] transition-colors cursor-pointer"
             >
               Trang chủ
             </button>
             <span className="text-slate-300" aria-hidden="true">·</span>
             <button
               onClick={() => onSelectTab('everyday')}
-              className="hover:text-[#245E59] transition-colors cursor-pointer"
+              className="hover:text-[#1764C0] transition-colors cursor-pointer"
             >
               Giao tiếp hằng ngày
             </button>
             <span className="text-slate-300" aria-hidden="true">·</span>
             <button
               onClick={() => onSelectTab('classroom')}
-              className="hover:text-[#245E59] transition-colors cursor-pointer"
+              className="hover:text-[#1764C0] transition-colors cursor-pointer"
             >
               Tiếng Anh lớp học
             </button>
             <span className="text-slate-300" aria-hidden="true">·</span>
             <button
               onClick={() => onSelectTab('subjects')}
-              className="hover:text-[#245E59] transition-colors cursor-pointer"
+              className="hover:text-[#1764C0] transition-colors cursor-pointer"
             >
               Ngân hàng bộ môn
             </button>
             <span className="text-slate-300" aria-hidden="true">·</span>
             <button
               onClick={() => onSelectTab('progress')}
-              className="hover:text-[#245E59] transition-colors cursor-pointer"
+              className="hover:text-[#1764C0] transition-colors cursor-pointer"
             >
               Tiến độ
             </button>
             <span className="text-slate-300" aria-hidden="true">·</span>
             <button
               onClick={() => onSelectTab('about')}
-              className="hover:text-[#245E59] transition-colors cursor-pointer"
+              className="hover:text-[#1764C0] transition-colors cursor-pointer"
             >
               Giới thiệu
             </button>
@@ -85,12 +89,12 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
         </div>
 
         {/* Bottom Row: Minimal Copyright */}
-        <div className="flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-400 gap-1.5">
+        <div className="flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-400 gap-1.5 font-medium">
           <div>
-            © {new Date().getFullYear()} Na Duong – ESL Primary School.
+            © {new Date().getFullYear()} Co Do 2 - ESL primary school.
           </div>
-          <div>
-            Learn · Listen · Remember
+          <div className="flex items-center gap-2">
+            <span>Learn · Practise · Remember · Apply</span>
           </div>
         </div>
       </div>

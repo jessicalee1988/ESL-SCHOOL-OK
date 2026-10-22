@@ -16,6 +16,7 @@ export interface Phrase {
   subjectId?: string;
   pronunciationGuide?: string;
   difficulty?: 'beginner' | 'intermediate';
+  audioUrl?: string;
 }
 
 export interface SubjectItem {

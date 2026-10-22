@@ -41,6 +41,8 @@ export const CLASSROOM_CATEGORIES = [
 export const CLASSROOM_PHRASES: Phrase[] = [
   {
     "id": "CLE001",
+
+    "audioUrl": "/audio/CLE001.wav",
     "english": "Good morning, class!",
     "vietnamese": "Chào buổi sáng, cả lớp!",
     "ipa": "/ɡʊd ˈmɔrnɪŋ klæs/",
@@ -50,6 +52,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE002",
+
+    "audioUrl": "/audio/CLE002.wav",
     "english": "Please sit down.",
     "vietnamese": "Các em ngồi xuống nhé.",
     "ipa": "/pliz sɪt daʊn/",
@@ -59,6 +63,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE003",
+
+    "audioUrl": "/audio/CLE003.wav",
     "english": "Are you ready?",
     "vietnamese": "Các em sẵn sàng chưa?",
     "ipa": "/ɑr ju ˈrɛdi/",
@@ -68,6 +74,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE004",
+
+    "audioUrl": "/audio/CLE004.wav",
     "english": "Let's begin!",
     "vietnamese": "Chúng ta bắt đầu nhé!",
     "ipa": "/lɛts bɪˈɡɪn/",
@@ -77,6 +85,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE005",
+
+    "audioUrl": "/audio/CLE005.wav",
     "english": "Open your books.",
     "vietnamese": "Các em mở sách ra.",
     "ipa": "/ˈoʊpən jʊr bʊks/",
@@ -86,6 +96,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE006",
+
+    "audioUrl": "/audio/CLE006.wav",
     "english": "Look at the board.",
     "vietnamese": "Nhìn lên bảng.",
     "ipa": "/lʊk æt ðə bɔrd/",
@@ -95,6 +107,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE007",
+
+    "audioUrl": "/audio/CLE007.wav",
     "english": "Let's start our lesson.",
     "vietnamese": "Chúng ta bắt đầu bài học nhé.",
     "ipa": "/lɛts stɑrt aʊər ˈlɛsən/",
@@ -104,6 +118,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE008",
+
+    "audioUrl": "/audio/CLE008.wav",
     "english": "Listen, please.",
     "vietnamese": "Các em lắng nghe nhé.",
     "ipa": "/ˈlɪsən pliz/",
@@ -113,6 +129,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE009",
+
+    "audioUrl": "/audio/CLE009.wav",
     "english": "Repeat after me.",
     "vietnamese": "Nhắc lại theo cô/thầy.",
     "ipa": "/rɪˈpit ˈæftər mi/",
@@ -122,6 +140,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE010",
+
+    "audioUrl": "/audio/CLE010.wav",
     "english": "Read aloud.",
     "vietnamese": "Đọc to lên.",
     "ipa": "/rid əˈlaʊd/",
@@ -131,6 +151,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE011",
+
+    "audioUrl": "/audio/CLE011.wav",
     "english": "Write it down.",
     "vietnamese": "Viết lại nhé.",
     "ipa": "/raɪt ɪt daʊn/",
@@ -140,6 +162,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE012",
+
+    "audioUrl": "/audio/CLE012.wav",
     "english": "Work in pairs.",
     "vietnamese": "Làm việc theo cặp.",
     "ipa": "/wɝk ɪn pɛrz/",
@@ -149,6 +173,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE013",
+
+    "audioUrl": "/audio/CLE013.wav",
     "english": "Work in groups.",
     "vietnamese": "Làm việc theo nhóm.",
     "ipa": "/wɝk ɪn ɡrups/",
@@ -158,6 +184,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE014",
+
+    "audioUrl": "/audio/CLE014.wav",
     "english": "Raise your hand.",
     "vietnamese": "Giơ tay lên.",
     "ipa": "/reɪz jʊr hænd/",
@@ -167,6 +195,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE015",
+
+    "audioUrl": "/audio/CLE015.wav",
     "english": "Look at the picture.",
     "vietnamese": "Nhìn vào bức tranh.",
     "ipa": "/lʊk æt ðə ˈpɪktʃər/",
@@ -176,6 +206,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE016",
+
+    "audioUrl": "/audio/CLE016.wav",
     "english": "Be quiet, please.",
     "vietnamese": "Các em giữ trật tự nhé.",
     "ipa": "/bi ˈkwaɪət pliz/",
@@ -185,6 +217,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE017",
+
+    "audioUrl": "/audio/CLE017.wav",
     "english": "Pay attention, please.",
     "vietnamese": "Các em chú ý nhé.",
     "ipa": "/peɪ əˈtɛnʃən pliz/",
@@ -194,6 +228,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE018",
+
+    "audioUrl": "/audio/CLE018.wav",
     "english": "Sit nicely, please.",
     "vietnamese": "Các em ngồi ngay ngắn nhé.",
     "ipa": "/sɪt ˈnaɪsli pliz/",
@@ -203,6 +239,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE019",
+
+    "audioUrl": "/audio/CLE019.wav",
     "english": "Wait your turn.",
     "vietnamese": "Hãy chờ đến lượt.",
     "ipa": "/weɪt jʊr tɝn/",
@@ -212,6 +250,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE020",
+
+    "audioUrl": "/audio/CLE020.wav",
     "english": "One at a time.",
     "vietnamese": "Từng bạn một nhé.",
     "ipa": "/wʌn æt ə taɪm/",
@@ -221,6 +261,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE021",
+
+    "audioUrl": "/audio/CLE021.wav",
     "english": "Put your pencils down.",
     "vietnamese": "Các em đặt bút chì xuống.",
     "ipa": "/pʊt jʊr ˈpɛnsəlz daʊn/",
@@ -230,6 +272,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE022",
+
+    "audioUrl": "/audio/CLE022.wav",
     "english": "Eyes on me, please.",
     "vietnamese": "Các em nhìn lên cô/thầy nhé.",
     "ipa": "/aɪz ɑn mi pliz/",
@@ -239,6 +283,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE023",
+
+    "audioUrl": "/audio/CLE023.wav",
     "english": "Good job!",
     "vietnamese": "Làm tốt lắm!",
     "ipa": "/ɡʊd dʒɑb/",
@@ -248,6 +294,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE024",
+
+    "audioUrl": "/audio/CLE024.wav",
     "english": "Very good!",
     "vietnamese": "Rất tốt!",
     "ipa": "/ˈvɛri ɡʊd/",
@@ -257,6 +305,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE025",
+
+    "audioUrl": "/audio/CLE025.wav",
     "english": "Excellent!",
     "vietnamese": "Xuất sắc!",
     "ipa": "/ˈɛksələnt/",
@@ -266,6 +316,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE026",
+
+    "audioUrl": "/audio/CLE026.wav",
     "english": "Keep trying!",
     "vietnamese": "Hãy tiếp tục cố gắng!",
     "ipa": "/kip ˈtraɪɪŋ/",
@@ -275,6 +327,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE027",
+
+    "audioUrl": "/audio/CLE027.wav",
     "english": "You can do it!",
     "vietnamese": "Em làm được mà!",
     "ipa": "/ju kæn du ɪt/",
@@ -284,6 +338,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE028",
+
+    "audioUrl": "/audio/CLE028.wav",
     "english": "Try again!",
     "vietnamese": "Thử lại nhé!",
     "ipa": "/traɪ əˈɡɛn/",
@@ -293,6 +349,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE029",
+
+    "audioUrl": "/audio/CLE029.wav",
     "english": "Do you understand?",
     "vietnamese": "Các em hiểu chưa?",
     "ipa": "/du ju ˌʌndərˈstænd/",
@@ -302,6 +360,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE030",
+
+    "audioUrl": "/audio/CLE030.wav",
     "english": "Any questions?",
     "vietnamese": "Có câu hỏi nào không?",
     "ipa": "/ˈɛni ˈkwɛstʃənz/",
@@ -311,6 +371,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE031",
+
+    "audioUrl": "/audio/CLE031.wav",
     "english": "Who knows the answer?",
     "vietnamese": "Ai biết câu trả lời?",
     "ipa": "/hu noʊz ði ˈænsər/",
@@ -320,6 +382,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE032",
+
+    "audioUrl": "/audio/CLE032.wav",
     "english": "Is that correct?",
     "vietnamese": "Như vậy đúng chưa?",
     "ipa": "/ɪz ðæt kəˈrɛkt/",
@@ -329,6 +393,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE033",
+
+    "audioUrl": "/audio/CLE033.wav",
     "english": "Can you show me?",
     "vietnamese": "Em có thể chỉ cho cô/thầy xem không?",
     "ipa": "/kæn ju ʃoʊ mi/",
@@ -338,6 +404,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE034",
+
+    "audioUrl": "/audio/CLE034.wav",
     "english": "Do you need help?",
     "vietnamese": "Em có cần giúp đỡ không?",
     "ipa": "/du ju nid hɛlp/",
@@ -347,6 +415,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE035",
+
+    "audioUrl": "/audio/CLE035.wav",
     "english": "Time is up!",
     "vietnamese": "Hết giờ rồi!",
     "ipa": "/taɪm ɪz ʌp/",
@@ -356,6 +426,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE036",
+
+    "audioUrl": "/audio/CLE036.wav",
     "english": "Stop writing, please.",
     "vietnamese": "Các em dừng viết nhé.",
     "ipa": "/stɑp ˈraɪtɪŋ pliz/",
@@ -365,6 +437,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE037",
+
+    "audioUrl": "/audio/CLE037.wav",
     "english": "Close your books.",
     "vietnamese": "Các em đóng sách lại.",
     "ipa": "/kloʊz jʊr bʊks/",
@@ -374,6 +448,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE038",
+
+    "audioUrl": "/audio/CLE038.wav",
     "english": "Put your things away.",
     "vietnamese": "Các em cất đồ dùng đi.",
     "ipa": "/pʊt jʊr θɪŋz əˈweɪ/",
@@ -383,6 +459,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE039",
+
+    "audioUrl": "/audio/CLE039.wav",
     "english": "That's all for today.",
     "vietnamese": "Hôm nay chúng ta học đến đây thôi.",
     "ipa": "/ðæts ɔl fər təˈdeɪ/",
@@ -392,6 +470,8 @@ export const CLASSROOM_PHRASES: Phrase[] = [
   },
   {
     "id": "CLE040",
+
+    "audioUrl": "/audio/CLE040.wav",
     "english": "See you next lesson!",
     "vietnamese": "Hẹn gặp lại tiết học sau!",
     "ipa": "/si ju nɛkst ˈlɛsən/",

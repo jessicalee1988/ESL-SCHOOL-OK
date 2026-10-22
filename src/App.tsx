@@ -10,6 +10,7 @@ import { SpeechProvider } from './context/SpeechContext';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { SpeechFallbackModal } from './components/SpeechFallbackModal';
+import { OfflineStatusBanner } from './components/OfflineStatusBanner';
 
 // Views
 import { HomeView } from './views/HomeView';
@@ -37,7 +38,10 @@ export default function App() {
   return (
     <LearningProvider>
       <SpeechProvider>
-        <div className="min-h-screen flex flex-col bg-[#F8FDFB] text-[#245E59]">
+        <div className="min-h-screen flex flex-col bg-[#F5F8FD] text-[#172B4D]">
+          {/* Offline Connectivity Notification Banner */}
+          <OfflineStatusBanner />
+
           {/* Navigation Top Bar */}
           <Header 
             currentTab={currentTab} 

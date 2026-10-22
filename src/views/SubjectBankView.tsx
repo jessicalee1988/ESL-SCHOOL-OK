@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 import { SUBJECTS_DATA } from '../data/subjectPhrases';
 import { SubjectItem } from '../types';
-import { PhraseCard } from '../components/PhraseCard';
+import { FocusLearningCard } from '../components/FocusLearningCard';
 import { useLearning } from '../context/LearningContext';
 
 const ICON_MAP: Record<string, React.FC<{ className?: string }>> = {
@@ -98,61 +98,53 @@ export const SubjectBankView: React.FC<SubjectBankViewProps> = ({
         <div className="flex items-center justify-between">
           <button
             onClick={handleBackToSubjectList}
-            className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold text-[#245E59] bg-white border border-slate-200/90 rounded-xl hover:bg-slate-50 transition-colors shadow-xs cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-2 text-xs font-bold text-[#123A78] bg-white border border-slate-200 rounded-xl hover:bg-[#F5F8FD] transition-colors shadow-2xs cursor-pointer"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="w-4 h-4 text-[#123A78]" />
             <span>Quay lại tất cả bộ môn</span>
           </button>
 
-          <span className="text-xs text-slate-500 font-medium">
+          <span className="text-xs text-slate-500 font-bold">
             Bộ môn {SUBJECTS_DATA.findIndex((s) => s.id === activeSubject.id) + 1} / {SUBJECTS_DATA.length}
           </span>
         </div>
 
         {/* Dedicated Subject Banner */}
-        <div 
-          className="rounded-3xl p-6 sm:p-8 border shadow-xs transition-colors"
-          style={{ 
-            backgroundColor: `${activeSubject.accentColor}40`,
-            borderColor: activeSubject.borderColor 
-          }}
-        >
+        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-blue-100 shadow-sm">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div className="flex items-start sm:items-center gap-4">
-              <div 
-                className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white shadow-xs flex items-center justify-center shrink-0 border"
-                style={{ borderColor: activeSubject.borderColor }}
-              >
-                <IconComponent className="w-7 h-7 sm:w-8 sm:h-8 text-[#245E59]" />
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#FFF5D6] border border-[#F4C542]/50 shadow-2xs flex items-center justify-center shrink-0">
+                <IconComponent className="w-7 h-7 sm:w-8 sm:h-8 text-[#123A78]" />
               </div>
               <div className="space-y-1">
-                <div className="text-xs font-bold uppercase tracking-wider text-[#245E59]/80">
-                  Ngân hàng thuật ngữ & tình huống
+                <div className="text-xs font-black uppercase tracking-wider text-[#1764C0] flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#F4C542]"></span>
+                  <span>Ngân hàng thuật ngữ & tình huống</span>
                 </div>
-                <h1 className="text-2xl sm:text-3xl font-extrabold text-[#245E59] tracking-tight">
+                <h1 className="text-2xl sm:text-3xl font-black text-[#123A78] tracking-tight">
                   {activeSubject.nameEn} – {activeSubject.nameVi}
                 </h1>
-                <p className="text-xs sm:text-sm text-slate-700 max-w-xl">
+                <p className="text-xs sm:text-sm text-slate-600 max-w-xl font-medium">
                   {activeSubject.descriptionVi}
                 </p>
               </div>
             </div>
 
             {/* Progress Card */}
-            <div className="bg-white/90 backdrop-blur-xs rounded-2xl p-4 border border-slate-200/80 shadow-xs min-w-52 space-y-2 shrink-0">
-              <div className="flex items-center justify-between text-xs text-slate-500 font-medium">
+            <div className="bg-[#F5F8FD] rounded-2xl p-4 border border-blue-100 shadow-2xs min-w-52 space-y-2 shrink-0">
+              <div className="flex items-center justify-between text-xs text-slate-500 font-bold">
                 <span>Tiến độ môn học</span>
-                <span className="font-bold text-[#245E59] tabular-nums">{progressPercent}%</span>
+                <span className="font-black text-[#123A78] tabular-nums">{progressPercent}%</span>
               </div>
-              <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+              <div className="w-full bg-slate-200/70 rounded-full h-2 overflow-hidden">
                 <div 
-                  className="bg-[#245E59] h-2 rounded-full transition-all duration-300"
+                  className="bg-[#123A78] h-2 rounded-full transition-all duration-300"
                   style={{ width: `${progressPercent}%` }}
                 />
               </div>
-              <div className="text-[11px] text-slate-500 flex items-center justify-between">
-                <span>Đã ghi nhớ: <strong>{learnedInSubject}</strong>/{activeSubject.phrases.length} câu</span>
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+              <div className="text-[11px] text-slate-500 flex items-center justify-between font-medium">
+                <span>Đã ghi nhớ: <strong className="text-[#123A78]">{learnedInSubject}</strong>/{activeSubject.phrases.length} câu</span>
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#1764C0]" />
               </div>
             </div>
           </div>
@@ -168,31 +160,31 @@ export const SubjectBankView: React.FC<SubjectBankViewProps> = ({
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={`Tìm câu hỏi hoặc khẩu lệnh môn ${activeSubject.nameVi}...`}
-                className="w-full pl-10 pr-4 py-2.5 text-sm bg-white border border-slate-200 rounded-xl focus:outline-hidden focus:border-[#245E59] focus:ring-1 focus:ring-[#245E59] transition-all placeholder:text-slate-400 text-slate-800"
+                className="w-full pl-10 pr-4 py-2.5 text-sm bg-white border border-slate-200 rounded-xl focus:outline-hidden focus:border-[#1764C0] focus:ring-1 focus:ring-[#1764C0] transition-all placeholder:text-slate-400 text-[#172B4D]"
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 p-1"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400 hover:text-[#123A78] p-1 cursor-pointer"
                 >
                   Xóa
                 </button>
               )}
             </div>
 
-            <span className="text-xs text-slate-500 self-end sm:self-center">
-              Hiển thị <strong className="text-[#245E59]">{filteredPhrases.length}</strong> câu
+            <span className="text-xs text-slate-500 font-medium self-end sm:self-center">
+              Hiển thị <strong className="text-[#123A78]">{filteredPhrases.length}</strong> câu
             </span>
           </div>
 
           {/* Situational Tabs */}
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none">
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
             <button
               onClick={() => setSituationFilter('all')}
-              className={`px-3.5 py-2 text-xs font-medium rounded-xl whitespace-nowrap shrink-0 transition-all cursor-pointer ${
+              className={`px-4 py-2 text-xs font-bold rounded-xl whitespace-nowrap shrink-0 transition-all cursor-pointer ${
                 situationFilter === 'all'
-                  ? 'bg-[#245E59] text-white shadow-xs font-semibold'
-                  : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200/80 hover:text-[#245E59]'
+                  ? 'bg-[#123A78] text-[#F4C542] shadow-sm'
+                  : 'bg-white text-slate-600 hover:bg-[#F5F8FD] border border-slate-200 hover:text-[#123A78] hover:border-blue-200'
               }`}
             >
               Tất cả tình huống ({activeSubject.phrases.length})
@@ -204,15 +196,15 @@ export const SubjectBankView: React.FC<SubjectBankViewProps> = ({
                 <button
                   key={sit}
                   onClick={() => setSituationFilter(sit)}
-                  className={`px-3.5 py-2 text-xs font-medium rounded-xl whitespace-nowrap shrink-0 transition-all cursor-pointer ${
+                  className={`px-4 py-2 text-xs font-bold rounded-xl whitespace-nowrap shrink-0 transition-all cursor-pointer ${
                     isSelected
-                      ? 'bg-[#245E59] text-white shadow-xs font-semibold'
-                      : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200/80 hover:text-[#245E59]'
+                      ? 'bg-[#123A78] text-[#F4C542] shadow-sm'
+                      : 'bg-white text-slate-600 hover:bg-[#F5F8FD] border border-slate-200 hover:text-[#123A78] hover:border-blue-200'
                   }`}
                 >
                   <span>{sit}</span>
                   {countInSit > 0 && (
-                    <span className="ml-1.5 opacity-75 tabular-nums">({countInSit})</span>
+                    <span className="ml-1.5 opacity-80 tabular-nums">({countInSit})</span>
                   )}
                 </button>
               );
@@ -220,21 +212,16 @@ export const SubjectBankView: React.FC<SubjectBankViewProps> = ({
           </div>
         </div>
 
-        {/* Phrases List */}
+        {/* Focused Single-Expression Learning View */}
         {filteredPhrases.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {filteredPhrases.map((phrase) => (
-              <PhraseCard
-                key={phrase.id}
-                phrase={phrase}
-                badgeCategoryName={phrase.category}
-              />
-            ))}
-          </div>
+          <FocusLearningCard
+            phrases={filteredPhrases}
+            categoryTitle={`${activeSubject.nameVi} · ${situationFilter !== 'all' ? situationFilter : 'Mẫu câu bộ môn'}`}
+          />
         ) : (
-          <div className="text-center py-12 bg-white rounded-3xl border border-dashed border-slate-200 p-8 space-y-3">
+          <div className="text-center py-12 bg-white rounded-3xl border border-dashed border-blue-200 p-8 space-y-3">
             <BookOpen className="w-10 h-10 text-slate-300 mx-auto" />
-            <h3 className="text-base font-bold text-slate-700">
+            <h3 className="text-base font-bold text-[#123A78]">
               Không tìm thấy mẫu câu trong môn học này
             </h3>
             <p className="text-xs text-slate-500 max-w-sm mx-auto">
@@ -245,7 +232,7 @@ export const SubjectBankView: React.FC<SubjectBankViewProps> = ({
                 setSituationFilter('all');
                 setSearchQuery('');
               }}
-              className="px-4 py-2 text-xs font-medium bg-[#BCEBD8] text-[#245E59] rounded-xl hover:bg-[#a5e2cb] transition-colors"
+              className="px-4 py-2 text-xs font-bold bg-[#FFF5D6] text-[#123A78] border border-[#F4C542] rounded-xl hover:bg-[#fdeaa8] transition-colors cursor-pointer"
             >
               Xem tất cả mẫu câu môn {activeSubject.nameVi}
             </button>
@@ -259,15 +246,16 @@ export const SubjectBankView: React.FC<SubjectBankViewProps> = ({
   return (
     <div className="space-y-8">
       {/* Subject Bank Overview Banner */}
-      <div className="bg-linear-to-r from-[#FFF5D6]/70 via-white to-[#C9E9FF]/40 rounded-3xl p-6 sm:p-8 border border-[#E6D385] shadow-xs">
+      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-blue-100 shadow-sm">
         <div className="space-y-2">
-          <div className="text-xs font-bold uppercase tracking-wider text-[#245E59]">
-            Mô-đun 03 · Giảng dạy tích hợp
+          <div className="text-xs font-black uppercase tracking-wider text-[#1764C0] flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-[#F4C542]"></span>
+            <span>Mô-đun 03 · Giảng dạy tích hợp</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#245E59] tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-black text-[#123A78] tracking-tight">
             Subject English Bank – Ngân hàng tiếng Anh bộ môn
           </h1>
-          <p className="text-sm text-slate-600 max-w-3xl leading-relaxed">
+          <p className="text-sm text-slate-600 max-w-3xl leading-relaxed font-medium">
             Hỗ trợ giáo viên đưa tiếng Anh vào từng tiết học chuyên môn một cách tự nhiên và sinh động. Chọn một trong 8 bộ môn bên dưới để mở kho mẫu câu chuyên biệt:
           </p>
         </div>
@@ -278,47 +266,39 @@ export const SubjectBankView: React.FC<SubjectBankViewProps> = ({
         {SUBJECTS_DATA.map((subject) => {
           const IconComponent = ICON_MAP[subject.iconName] || BookOpen;
           const learnedCount = subject.phrases.filter((p) => completedIds.has(p.id)).length;
-          const isFinished = learnedCount === subject.phrases.length && subject.phrases.length > 0;
 
           return (
             <div
               key={subject.id}
               onClick={() => handleSelectSubject(subject.id)}
-              className="group flex flex-col justify-between p-6 rounded-3xl border transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md hover:-translate-y-1 bg-white hover:border-[#245E59]/40"
-              style={{
-                borderTopColor: subject.borderColor,
-                borderTopWidth: '4px',
-              }}
+              className="group flex flex-col justify-between p-6 rounded-3xl border border-slate-200/90 hover:border-[#1764C0]/50 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-lg hover:-translate-y-1 bg-white"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <div 
-                    className="w-12 h-12 rounded-2xl flex items-center justify-center text-[#245E59] group-hover:scale-105 transition-transform"
-                    style={{ backgroundColor: `${subject.accentColor}80` }}
-                  >
-                    <IconComponent className="w-6 h-6 text-[#245E59]" />
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center text-[#123A78] bg-[#FFF5D6] border border-[#F4C542]/40 group-hover:scale-105 transition-transform shadow-2xs">
+                    <IconComponent className="w-6 h-6 text-[#123A78]" />
                   </div>
 
-                  <span className="text-[11px] font-medium text-slate-500 tabular-nums">
+                  <span className="text-xs font-bold text-slate-500 tabular-nums px-2.5 py-1 bg-[#F5F8FD] rounded-lg border border-blue-100/60">
                     {learnedCount}/{subject.phrases.length} đã học
                   </span>
                 </div>
 
-                <h3 className="text-lg font-bold text-[#245E59] tracking-tight group-hover:text-[#1a4642] mb-0.5">
+                <h3 className="text-base font-black text-[#123A78] tracking-tight group-hover:text-[#1764C0] mb-0.5">
                   {subject.nameVi}
                 </h3>
-                <div className="text-xs font-semibold text-slate-500 mb-2.5">
+                <div className="text-xs font-bold text-[#1764C0] mb-2.5">
                   {subject.nameEn}
                 </div>
 
-                <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed mb-4">
+                <p className="text-xs text-slate-600 font-medium line-clamp-3 leading-relaxed mb-4">
                   {subject.descriptionVi}
                 </p>
               </div>
 
-              <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-[#245E59]">
+              <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-black text-[#123A78] group-hover:text-[#1764C0]">
                 <span>Vào học bộ môn</span>
-                <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 text-[#F4C542] transform group-hover:translate-x-1 transition-transform" />
               </div>
             </div>
           );

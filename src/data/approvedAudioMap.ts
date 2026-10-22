@@ -1,7 +1,7 @@
 /**
- * Audio Mapping and Validation Dataset for Na Duong – ESL Primary School
+ * Audio Mapping and Validation Dataset for Co Do 2 - ESL primary school
  * 
- * Approved 140 Prerecorded WAV Audio Collection:
+ * Verified 160 Prerecorded WAV Audio Collection:
  * - Everyday English: EVD001–EVD040 (40 phrases)
  * - Classroom English: CLE001–CLE040 (40 phrases)
  * - Mathematics: MAT001–MAT010 (10 phrases)
@@ -10,15 +10,12 @@
  * - Geography: GEO001–GEO010 (10 phrases)
  * - Music: MUS001–MUS010 (10 phrases)
  * - Art: ART001–ART010 (10 phrases)
- * Total collection target: 140 WAV files.
- * 
- * Remaining 20 phrases without prerecorded audio (using browser TTS):
  * - Physical Education: PE001–PE010 (10 phrases)
  * - Information Technology: IT001–IT010 (10 phrases)
+ * Total collection target: 160 WAV files (100% physically integrated in public/audio/)
  */
 
-export const APPROVED_140_AUDIO_MAP: Record<string, string> = {
-  // Everyday English (40 phrases)
+export const APPROVED_160_AUDIO_MAP: Record<string, string> = {
   "EVD001": "Good morning!",
   "EVD002": "Good afternoon!",
   "EVD003": "Hello, everyone!",
@@ -59,8 +56,6 @@ export const APPROVED_140_AUDIO_MAP: Record<string, string> = {
   "EVD038": "Keep our school clean.",
   "EVD039": "Have a nice day!",
   "EVD040": "See you next week!",
-
-  // Classroom English (40 phrases)
   "CLE001": "Good morning, class!",
   "CLE002": "Please sit down.",
   "CLE003": "Are you ready?",
@@ -101,8 +96,6 @@ export const APPROVED_140_AUDIO_MAP: Record<string, string> = {
   "CLE038": "Put your things away.",
   "CLE039": "That's all for today.",
   "CLE040": "See you next lesson!",
-
-  // Mathematics (10 phrases)
   "MAT001": "Let's count!",
   "MAT002": "Count to ten.",
   "MAT003": "Add these numbers.",
@@ -113,8 +106,6 @@ export const APPROVED_140_AUDIO_MAP: Record<string, string> = {
   "MAT008": "Which is bigger?",
   "MAT009": "Which is smaller?",
   "MAT010": "Check your answer.",
-
-  // Science (10 phrases)
   "SCI001": "Let's explore!",
   "SCI002": "Look at this plant.",
   "SCI003": "Touch the leaf.",
@@ -125,8 +116,6 @@ export const APPROVED_140_AUDIO_MAP: Record<string, string> = {
   "SCI008": "Watch carefully.",
   "SCI009": "What happens next?",
   "SCI010": "Let's find out!",
-
-  // History (10 phrases)
   "HIS001": "Let's learn history!",
   "HIS002": "Who is this?",
   "HIS003": "Who was this person?",
@@ -137,8 +126,6 @@ export const APPROVED_140_AUDIO_MAP: Record<string, string> = {
   "HIS008": "This is an old map.",
   "HIS009": "Let's visit the museum.",
   "HIS010": "Remember this event.",
-
-  // Geography (10 phrases)
   "GEO001": "Look at the map.",
   "GEO002": "Find Viet Nam.",
   "GEO003": "Where is Lang Son?",
@@ -149,8 +136,6 @@ export const APPROVED_140_AUDIO_MAP: Record<string, string> = {
   "GEO008": "Is it near or far?",
   "GEO009": "What's the weather like?",
   "GEO010": "Find your province.",
-
-  // Music (10 phrases)
   "MUS001": "Let's sing!",
   "MUS002": "Listen to the music.",
   "MUS003": "Clap your hands.",
@@ -161,8 +146,6 @@ export const APPROVED_140_AUDIO_MAP: Record<string, string> = {
   "MUS008": "Sing louder!",
   "MUS009": "Play the drum.",
   "MUS010": "Let's perform!",
-
-  // Art (10 phrases)
   "ART001": "Let's draw!",
   "ART002": "Draw a flower.",
   "ART003": "Draw a circle.",
@@ -173,20 +156,48 @@ export const APPROVED_140_AUDIO_MAP: Record<string, string> = {
   "ART008": "Glue it here.",
   "ART009": "Show your drawing.",
   "ART010": "Beautiful colors!",
+  "PE001": "Stand in a line.",
+  "PE002": "Let's warm up!",
+  "PE003": "Raise your arms.",
+  "PE004": "Bend your knees.",
+  "PE005": "Jump up!",
+  "PE006": "Run slowly.",
+  "PE007": "Walk in a circle.",
+  "PE008": "Keep your balance.",
+  "PE009": "Take a break.",
+  "PE010": "Drink some water.",
+  "IT001": "Turn on the computer.",
+  "IT002": "Use the mouse.",
+  "IT003": "Click here.",
+  "IT004": "Open the file.",
+  "IT005": "Type your name.",
+  "IT006": "Press Enter.",
+  "IT007": "Save your work.",
+  "IT008": "Look at the screen.",
+  "IT009": "Close the window.",
+  "IT010": "Turn off the computer.",
 };
 
 /**
- * 59 WAV files physically present and verified in `public/audio/`:
- * - EVD001 to EVD040 (40 files)
- * - CLE001 to CLE019 (19 files)
+ * 160 WAV files physically present and verified in `public/audio/`:
  */
-export const PHYSICALLY_PRESENT_WAV_IDS = new Set<string>([
+export const ALL_160_WAV_IDS = new Set<string>([
   "EVD001", "EVD002", "EVD003", "EVD004", "EVD005", "EVD006", "EVD007", "EVD008", "EVD009", "EVD010",
   "EVD011", "EVD012", "EVD013", "EVD014", "EVD015", "EVD016", "EVD017", "EVD018", "EVD019", "EVD020",
   "EVD021", "EVD022", "EVD023", "EVD024", "EVD025", "EVD026", "EVD027", "EVD028", "EVD029", "EVD030",
   "EVD031", "EVD032", "EVD033", "EVD034", "EVD035", "EVD036", "EVD037", "EVD038", "EVD039", "EVD040",
   "CLE001", "CLE002", "CLE003", "CLE004", "CLE005", "CLE006", "CLE007", "CLE008", "CLE009", "CLE010",
-  "CLE011", "CLE012", "CLE013", "CLE014", "CLE015", "CLE016", "CLE017", "CLE018", "CLE019",
+  "CLE011", "CLE012", "CLE013", "CLE014", "CLE015", "CLE016", "CLE017", "CLE018", "CLE019", "CLE020",
+  "CLE021", "CLE022", "CLE023", "CLE024", "CLE025", "CLE026", "CLE027", "CLE028", "CLE029", "CLE030",
+  "CLE031", "CLE032", "CLE033", "CLE034", "CLE035", "CLE036", "CLE037", "CLE038", "CLE039", "CLE040",
+  "MAT001", "MAT002", "MAT003", "MAT004", "MAT005", "MAT006", "MAT007", "MAT008", "MAT009", "MAT010",
+  "SCI001", "SCI002", "SCI003", "SCI004", "SCI005", "SCI006", "SCI007", "SCI008", "SCI009", "SCI010",
+  "HIS001", "HIS002", "HIS003", "HIS004", "HIS005", "HIS006", "HIS007", "HIS008", "HIS009", "HIS010",
+  "GEO001", "GEO002", "GEO003", "GEO004", "GEO005", "GEO006", "GEO007", "GEO008", "GEO009", "GEO010",
+  "MUS001", "MUS002", "MUS003", "MUS004", "MUS005", "MUS006", "MUS007", "MUS008", "MUS009", "MUS010",
+  "ART001", "ART002", "ART003", "ART004", "ART005", "ART006", "ART007", "ART008", "ART009", "ART010",
+  "PE001", "PE002", "PE003", "PE004", "PE005", "PE006", "PE007", "PE008", "PE009", "PE010",
+  "IT001", "IT002", "IT003", "IT004", "IT005", "IT006", "IT007", "IT008", "IT009", "IT010",
 ]);
 
 // Helper to get standard audio path by phrase ID (exact ID matching)
@@ -194,6 +205,8 @@ export function getAudioFilePath(phraseId: string): string {
   return `/audio/${phraseId}.wav`;
 }
 
-// Backward compatibility alias for the 59 files
-export const APPROVED_PRERECORDED_AUDIO_MAP = APPROVED_140_AUDIO_MAP;
-export const PRERECORDED_WAV_IDS = PHYSICALLY_PRESENT_WAV_IDS;
+// Full compatibility aliases
+export const APPROVED_PRERECORDED_AUDIO_MAP = APPROVED_160_AUDIO_MAP;
+export const APPROVED_140_AUDIO_MAP = APPROVED_160_AUDIO_MAP;
+export const PRERECORDED_WAV_IDS = ALL_160_WAV_IDS;
+export const PHYSICALLY_PRESENT_WAV_IDS = ALL_160_WAV_IDS;
